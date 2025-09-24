@@ -15,5 +15,4 @@ def get_summary(db: Session = Depends(get_db)):
 
 @router.get("/insight")
 def get_ai_insight():
-    # বাস্তবে এখানে AI API call হবে, আপাতত mock response দিব
     return {"insight": "Posts with images tend to get 40% more engagement 🚀"}
