@@ -33,6 +33,7 @@ def create_design(db: Session, design: schemas.DesignCreate):
 
 def get_designs(db: Session):
     return db.query(models.Design).all()
+
 def delete_design(db: Session, design_id: int):
     db_design = db.query(models.Design).filter(models.Design.id == design_id).first()
     if db_design:
