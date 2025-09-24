@@ -26,7 +26,7 @@ def publish_post(post_id: int):
 
 
 # Scheduler instance
-scheduler = BackgroundScheduler(timezone="")
+scheduler = BackgroundScheduler(timezone="UTC")
 scheduler.start()
 
 
