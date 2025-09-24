@@ -7,7 +7,6 @@ from app import models
 
 
 def publish_post(post_id: int):
-    """ নির্দিষ্ট সময়ে পোস্ট পাবলিশ করার কাজ করবে (mock). """
     db: Session = SessionLocal()
     post = db.query(models.ScheduledPost).filter(
         models.ScheduledPost.id == post_id
@@ -19,8 +18,6 @@ def publish_post(post_id: int):
     )
 
     if post and post.status == "scheduled":
-        # এখানে আসল API ইন্টিগ্রেশন হতো (Facebook, Twitter ইত্যাদি)
-        # এখন শুধু mock publish করবো:
         post.status = "published"
         print(f"✅ Post {post.id} published at {datetime.utcnow()} !")
         db.commit()
@@ -29,7 +26,7 @@ def publish_post(post_id: int):
 
 
 # Scheduler instance
-scheduler = BackgroundScheduler(timezone="UTC")
+scheduler = BackgroundScheduler(timezone="")
 scheduler.start()
 
 
@@ -37,9 +34,9 @@ def schedule_post(post_id: int, run_date: datetime):
     """ Add job to scheduler """
     scheduler.add_job(
         publish_post,
-        "date",             # একবার ফায়ার হবে
+        "date", 
         run_date=run_date,
         args=[post_id],
-        id=str(post_id),    # job ID
+        id=str(post_id),
         replace_existing=True,
     )
