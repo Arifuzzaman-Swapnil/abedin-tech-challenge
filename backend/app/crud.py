@@ -1,4 +1,3 @@
-# app/crud.py
 from sqlalchemy.orm import Session
 from app import models, schemas
 from app.scheduler import schedule_post   
