@@ -26,4 +26,4 @@ app.include_router(analytics.router, prefix="/analytics", tags=["Analytics"])
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to Abedin Tech Backend API 🚀"}
+    return {"message": "Thanks to Abedin Tech Backend API"}
